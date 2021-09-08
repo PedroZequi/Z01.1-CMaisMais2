@@ -13,5 +13,6 @@ begin
 	
 	q<= a and b;
 
+	q <= a and b;
 
 end architecture;
