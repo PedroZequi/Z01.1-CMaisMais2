@@ -15,9 +15,13 @@
     "user-github": "pedroaltobelli23"
   },
   "aluno-4": {
-    "nome": "",
-    "email-insper": "",
-    "user-github": ""
+    "nome": "Bruno Marques Li Volsi Falcao",
+<<<<<<< HEAD
+    "email-insper": "brunomlvf@al.insper.edu.br",
+=======
+    "email-insper": "Brunomlvf@al.insper.edu.com",
+>>>>>>> 863fce9adc0e83102d3d71957574624b333c1ce3
+    "user-github": "Brunelas"
   },
   "aluno-5": {
     "nome": "Pedro Henrique Britto Aragao Andrade",
