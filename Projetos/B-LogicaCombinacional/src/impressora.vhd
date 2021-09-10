@@ -11,5 +11,5 @@ architecture arch of impressora is
 
 begin
 
-
+	
 end architecture;
