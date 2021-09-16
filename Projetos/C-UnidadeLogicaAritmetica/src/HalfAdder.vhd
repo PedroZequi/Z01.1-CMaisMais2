@@ -23,5 +23,7 @@ begin
 
    soma <= a xor b;
 	vaium <= a and b;
+  -- Implementação vem aqui!
+
 
 end architecture;
