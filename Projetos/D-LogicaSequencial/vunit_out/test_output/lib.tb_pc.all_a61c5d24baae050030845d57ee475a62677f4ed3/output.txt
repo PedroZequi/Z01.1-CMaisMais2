@@ -1,18 +1,18 @@
-# vsim -wlf /home/borg/elementos\ de\ sistema/Z01.1-CMaisMais2/Projetos/D-LogicaSequencial/vunit_out/test_output/lib.tb_pc.all_a61c5d24baae050030845d57ee475a62677f4ed3/modelsim/vsim.wlf -quiet -t ps -onfinish stop lib.tb_pc(tb) -L vunit_lib -L lib -g/tb_pc/runner_cfg="active python runner : true,enabled_test_cases : ,output path : /home/borg/elementos de sistema/Z01.1-CMaisMais2/Projetos/D-LogicaSequencial/vunit_out/test_output/lib.tb_pc.all_a61c5d24baae050030845d57ee475a62677f4ed3/,tb path : /home/borg/elementos de sistema/Z01.1-CMaisMais2/Projetos/D-LogicaSequencial/testes/,use_color : true" 
-# Start time: 18:06:42 on Sep 22,2021
+# vsim -modelsimini /home/borg/Elementos/Z01.1-CMaisMais2/Projetos/D-LogicaSequencial/vunit_out/modelsim/modelsim.ini -wlf /home/borg/Elementos/Z01.1-CMaisMais2/Projetos/D-LogicaSequencial/vunit_out/test_output/lib.tb_pc.all_a61c5d24baae050030845d57ee475a62677f4ed3/modelsim/vsim.wlf -quiet -t ps -onfinish stop lib.tb_pc(tb) -L vunit_lib -L lib -g/tb_pc/runner_cfg="active python runner : true,enabled_test_cases : ,output path : /home/borg/Elementos/Z01.1-CMaisMais2/Projetos/D-LogicaSequencial/vunit_out/test_output/lib.tb_pc.all_a61c5d24baae050030845d57ee475a62677f4ed3/,tb path : /home/borg/Elementos/Z01.1-CMaisMais2/Projetos/D-LogicaSequencial/testes/,use_color : true" 
+# Start time: 12:15:13 on Sep 23,2021
 # ** Warning: Design size of 21450 statements exceeds ModelSim-Intel FPGA Starter Edition recommended capacity.
 # Expect performance to be adversely affected.
 # ** Warning: (vsim-8683) Uninitialized out port /tb_pc/mapping/output(15 downto 0) has no driver.
 # This port will contribute value (UUUUUUUUUUUUUUUU) to the signal network.
 # ** Error: Falha em teste: 0
-#    Time: 200 ps  Iteration: 0  Process: /tb_pc/main File: /home/borg/elementos de sistema/Z01.1-CMaisMais2/Projetos/D-LogicaSequencial/testes/tb_PC.vhd
-# Break in Process main at /home/borg/elementos de sistema/Z01.1-CMaisMais2/Projetos/D-LogicaSequencial/testes/tb_PC.vhd line 52
-# Stopped at /home/borg/elementos de sistema/Z01.1-CMaisMais2/Projetos/D-LogicaSequencial/testes/tb_PC.vhd line 52
+#    Time: 200 ps  Iteration: 0  Process: /tb_pc/main File: /home/borg/Elementos/Z01.1-CMaisMais2/Projetos/D-LogicaSequencial/testes/tb_PC.vhd
+# Break in Process main at /home/borg/Elementos/Z01.1-CMaisMais2/Projetos/D-LogicaSequencial/testes/tb_PC.vhd line 52
+# Stopped at /home/borg/Elementos/Z01.1-CMaisMais2/Projetos/D-LogicaSequencial/testes/tb_PC.vhd line 52
 # 
 # Test Run Failed!
 # 
 # Stack trace result from 'tb' command
-#  /home/borg/elementos de sistema/Z01.1-CMaisMais2/Projetos/D-LogicaSequencial/testes/tb_PC.vhd 52 return [address 0xf6d6b699] Process main
+#  /home/borg/Elementos/Z01.1-CMaisMais2/Projetos/D-LogicaSequencial/testes/tb_PC.vhd 52 return [address 0xf6d6b699] Process main
 # 
 # 
 # Surrounding code from 'see' command
