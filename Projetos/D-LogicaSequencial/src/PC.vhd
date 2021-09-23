@@ -43,8 +43,22 @@ architecture arch of PC is
           output: out STD_LOGIC_VECTOR(15 downto 0)
         );
     end component;
-
+	 
+	 component Mux16 is
+		port(
+			a:   in  STD_LOGIC_VECTOR(15 downto 0);
+			b:   in  STD_LOGIC_VECTOR(15 downto 0);
+			sel: in  STD_LOGIC;
+			q:   out STD_LOGIC_VECTOR(15 downto 0));
+		end component;
+		
+		signal outputReg16,inputReg16,Incrementado,saidamuxinc : STD_LOGIC_VECTOR(15 downto 0);
 begin
 
+registrador: Register16 port map(clock,inputReg16,'1',outputReg16);
+incrementer: Inc16 port map(outputReg16,Incrementado);
+muxincrementacao: Mux16 port map(outputReg16,Incrementado,increment,saidamuxinc);
+muxloader: Mux16 port map(saidamuxinc,input,load,inputReg16);
+muxreseter: Mux16 port map(outputReg16,"0000000000000000",reset,output);
 
 end architecture;
