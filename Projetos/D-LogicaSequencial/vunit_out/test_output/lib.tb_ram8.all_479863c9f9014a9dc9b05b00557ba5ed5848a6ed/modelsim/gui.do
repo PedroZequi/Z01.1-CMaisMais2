@@ -1,4 +1,4 @@
-source "/home/borg/elementos\ de\ sistema/Z01.1-CMaisMais2/Projetos/D-LogicaSequencial/vunit_out/test_output/lib.tb_ram8.all_479863c9f9014a9dc9b05b00557ba5ed5848a6ed/modelsim/common.do"
+source "/home/borg/Elementos/Z01.1-CMaisMais2/Projetos/D-LogicaSequencial/vunit_out/test_output/lib.tb_ram8.all_479863c9f9014a9dc9b05b00557ba5ed5848a6ed/modelsim/common.do"
 proc vunit_user_init {} {
     return 0
 }
