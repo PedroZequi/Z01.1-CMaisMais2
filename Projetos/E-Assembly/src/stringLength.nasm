@@ -52,11 +52,11 @@ movw %A, %D
 addw (%A), %D, %D
 movw %D, (%A)
 
-leaw $LOOPCONTA, %A
+leaw $WHILE, %A
 jmp
 nop
 
-BREAK:
+END:
 
 leaw $0, %A
 movw (%A), %D
