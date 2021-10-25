@@ -1,32 +1,32 @@
 {
   "aluno-1": {
-    "nome": "",
-    "email-insper": "",
-    "user-github": ""
+    "nome": "Pedro de Souza Zequi",
+    "email-insper": "pedrosz@al.insper.edu.br",
+    "user-github": "PedroZequi"
   },
   "aluno-2": {
-    "nome": "",
-    "email-insper": "",
-    "user-github": ""
+    "nome": "Thiago Shiguero Kawahara",
+    "email-insper": "thiagosk1@al.insper.edu.br",
+    "user-github": "thiagosk"
   },
   "aluno-3": {
-    "nome": "",
-    "email-insper": "",
-    "user-github": ""
+    "nome": "Pedro Altobelli Teixeira Pinto",
+    "email-insper": "pedroatp@al.insper.edu.br",
+    "user-github": "pedroaltobelli23"
   },
   "aluno-4": {
-    "nome": "",
-    "email-insper": "",
-    "user-github": ""
+    "nome": "Bruno Marques Li Volsi Falcao",
+    "email-insper": "brunomlvf@al.insper.edu.br",
+    "user-github": "Brunelas"
   },
   "aluno-5": {
-    "nome": "",
-    "email-insper": "",
-    "user-github": ""
+    "nome": "Pedro Henrique Britto Aragao Andrade",
+    "email-insper": "pedroa3@al.insper.edu.br",
+    "user-github": "Pedro2712"
   },
   "aluno-6": {
-    "nome": "",
-    "email-insper": "",
-    "user-github": ""
+    "nome": "Willian Kenzo Asanuma lee",
+    "email-insper": "williankal@al.insper.edu.br",
+    "user-github": "williankal"
   }
 }
