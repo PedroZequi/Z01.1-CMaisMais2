@@ -18,10 +18,12 @@ entity ControlUnit is
 		muxALUI_A                   : out STD_LOGIC;                     -- mux que seleciona entre
                                                                      -- instrução  e ALU para reg. A
 		muxAM                       : out STD_LOGIC;                     -- mux que seleciona entre
+
+		muxRegis							 : out STD_LOGIC;
                                                                      -- reg. A e Mem. RAM para ALU
                                                                      -- A  e Mem. RAM para ALU
 		zx, nx, zy, ny, f, no       : out STD_LOGIC;                     -- sinais de controle da ALU
-		loadA, loadD, loadM, loadPC : out STD_LOGIC               -- sinais de load do reg. A,
+		loadA, loadD, loadM, loadPC, loadS: out STD_LOGIC               -- sinais de load do reg. A,
                                                                      -- reg. D, Mem. RAM e Program Counter
     );
 end entity;
@@ -29,31 +31,25 @@ end entity;
 architecture arch of ControlUnit is
 
 begin
-  -- Load D, A, M
-  loadD <= instruction(17) and instruction(4);
-  loadM <= instruction(17) and instruction(5);
-  loadA <= not instruction(17) or (instruction(17) and instruction(3));
-  
-  -- mux
-  muxALUI_A <= not instruction(17);
-  muxAM <= instruction(17) and instruction(13);
-
-  -- zx, nx, zy, ny, f, no
-  zx <= instruction(17) and instruction(12);
-  nx <= instruction(17) and instruction(11);
-  zy <= instruction(17) and instruction(10);
-  ny <= instruction(17) and instruction(9);
-  f <=  instruction(17) and instruction(8);
-  no <= instruction(17) and instruction(7);
-
-  -- JG, JE, JGE, JL, JNE, JLE, JMP, NOP 
-  loadPC <= (instruction(17) and not instruction(2) and not instruction(1) and instruction(0) and not zr and not ng) or  -- jg (se valor > 0)
-            (instruction(17) and not instruction(2) and instruction(1) and not instruction(0)  and zr and not ng) or  -- je (se valor = 0)
-            (instruction(17) and instruction(2) and not instruction(1) and not instruction(0)  and not zr and ng) or  -- jl (se valor < 0)
-            (instruction(17) and not instruction(2) and instruction(1) and instruction(0)  and not ng) or  -- jge (se valor >= 0)
-            (instruction(17) and instruction(2) and not instruction(1) and instruction(0)  and not zr) or  -- jne (se valor != de 0)
-            (instruction(17) and instruction(2) and instruction(1) and not instruction(0)  and (ng or zr)) or  -- jle (se valor <= 0)
-            (instruction(17) and instruction(2) and instruction(1) and instruction(0)); --jmp
-
-
+	loadD <= instruction(17) and instruction(4);
+	loadM <= instruction(17) and instruction(5);
+	loadA <= (instruction(17) and instruction(3)) or not instruction(17);
+	loadS <= instruction(17) and instruction(6);
+	muxALUI_A <= not(instruction(17));
+	muxAM <= instruction(17) and instruction(13);
+	muxRegis <= instruction(17) and instruction(14);
+	zx <= instruction(17) and instruction(12);
+	nx <= instruction(17) and instruction(11);
+	zy <= instruction(17) and instruction(10);
+	ny <= instruction(17) and instruction(9);
+	f <= instruction(17) and instruction(8);
+	no <= instruction(17) and instruction(7);
+	loadPC <= (instruction(17) and not(instruction(2)) and not(instruction(1)) and instruction(0) and not(ng) and not(zr)) or  --JG
+				 (instruction(17) and not(instruction(2)) and instruction(1) and not(instruction(0)) and not(ng) and zr) or  --JE
+				 (instruction(17) and not(instruction(2)) and instruction(1) and instruction(0) and not(ng)) or   --JGE
+				 (instruction(17) and instruction(2) and not(instruction(1)) and not(instruction(0)) and not(zr) and ng) or --JL
+				 (instruction(17) and instruction(2) and not(instruction(1)) and instruction(0) and not(zr)) or  --JNE
+				 (instruction(17) and instruction(2) and instruction(1) and not(instruction(0)) and not(ng or zr)) or  --JLE
+				 (instruction(17) and instruction(2) and instruction(1) and instruction(0));  --JMP
+	
 end architecture;
