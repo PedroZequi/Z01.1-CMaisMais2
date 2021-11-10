@@ -16,8 +16,90 @@ public class Code {
      * @return Opcode (String de 4 bits) com código em linguagem de máquina para a instrução.
      */
     public static String dest(String[] mnemnonic) {
-        /* TODO: implementar */
-    	return "";
+        int size = mnemnonic.length;
+        switch (mnemnonic[0]){
+            case "movw":
+                if (size==4) {
+                    switch (mnemnonic[2]) {
+                        case "%A":
+                            switch (mnemnonic[3]) {
+                                /*quando movw %X,%A,(%A)*/
+                                case "(%A)":
+                                    return "0101";
+                                /*quando movw %X,%A,%D*/
+                                default:
+                                    return "0011";
+                            }
+                        case "%D":
+                            switch (mnemnonic[3]) {
+                                /*quando movw %X,%D,%A*/
+                                case "%A":
+                                    return "0011";
+                                /*quando movw %X,%D,(%A)*/
+                                default:
+                                    return "0110";
+                            }
+                        default:
+                            switch (mnemnonic[3]) {
+                                /*quando movw %X,(%A),%A*/
+                                case "%A":
+                                    return "0101";
+                                /*quando movw %X,(%A),%D*/
+                                default:
+                                    return "0110";
+                            }
+                    }
+                }
+                else{
+                    switch(mnemnonic[2]){
+                        /*quando movw %X,%A*/
+                        case "%A":
+                            return "0001";
+                        /*quando movw %X,(%A)*/
+                        case "(%A)":
+                            return "0100";
+                        /*quando movw %X,%D*/
+                        default:
+                            return "0010";
+                    }
+                }
+            case "addw":
+            case "subw":
+            case "rsubw":
+            case "andw":
+            case "orw":
+                switch(mnemnonic[3]){
+                    /*quando addw %X,%X,%A*/
+                    /*quando subw %X,%X,%A*/
+                    /*quando rsubw %X,%X,%A*/
+                    case "%A":
+                        return "0001";
+                    /*quando addw %X,%X,(%A)*/
+                    /*quando subw %X,%X,(%A)*/
+                    /*quando rsubw %X,%X,(%A)*/
+                    case "(%A)":
+                        return "0100";
+                    /*quando addw %X,%X,%D*/
+                    /*quando subw %X,%X,%D*/
+                    /*quando rsubw %X,%X,%D*/
+                    default:
+                        return "0010";
+                }
+            case "incw":
+            case "decw":
+            case "negw":
+            case "notw":
+                switch(mnemnonic[1]){
+                    case "%A":
+                        return "0001";
+                    case "(%A)":
+                        return "0100";
+                    default:
+                        return "0010";
+                }
+            default:
+                return "0000";
+        }
     }
 
     /**
