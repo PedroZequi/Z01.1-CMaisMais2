@@ -111,31 +111,70 @@ public class Code {
         /* TODO: implementar */
     	switch (mnemnonic[0]){
             case "movw" : switch (mnemnonic[1]) {
-                case "%A" : switch (mnemnonic[2]){
-                    case "%D" : return "000110000";
-                    case "(%A)" : return "000110000";
-                }
-                case "%D" : switch (mnemnonic[2]){
-                    case "%A" : return "000001100";
-                    case "(%A)" : return "000001100";
-                }
-                case "(%A)" : return "001110000";
+                case "%A":
+                    return "000110000";
+                case "%D":
+                    return "000001100";
+                case "(%A)":
+                    return "001110000";
+                case "$1":
+                    return "000111111";
+                case "$0":
+                    return "000101010";
             }
             case "addw" :  switch (mnemnonic[1]) {
-                case "%A" : return "000000010";
-                case "(%A)" : return "001000010";
-                case "$1" : return "001110111";
+                case "%D": switch (mnemnonic[2]){
+                    case "%A":return "000000010";
+                    case "(%A)":return "001000010";
+                    case "$1":return "00";
+                }
+                case "%A": switch (mnemnonic[2]){
+                    case "%D":return "000000010";
+                    case "$1":return "000110111";
+                }
+                case "(%A)":switch (mnemnonic[2]){
+                    case "%D":return "001000010";
+                    case "$1":return "001110111";
+                }
             }
             case "incw" :  switch (mnemnonic[1]) {
                 case "%A" : return "000110111";
-                case "(%A)" : return "001110111";
                 case "%D" : return "000011111";
             }
             case "subw" :  switch (mnemnonic[1]) {
-                case "%D" : return "001010011";
-                case "(%A)" : return "001110010";
+                case "%D":switch (mnemnonic[2]){
+                    case "%A":return "000010011";
+                    case "(%A)":return "001010011";
+                    case "$1":return "000001110";
+                }
+                case "%A":switch (mnemnonic[2]){
+                    case "$1":return "000110010";
+                    case "%D":return "000000111";
+                }
+                case "(%A)":switch (mnemnonic[2]){
+                    case "$1":return "001110010";
+                    case "%D":return "001000111";
+                }
             }
-            case "rsubw" : return "001000111";
+            case "rsubw" : switch (mnemnonic[1]){
+                case "%D":switch (mnemnonic[2]){
+                    case "%A":return "000000111";
+                    case "(%A)":return "001000111";
+                }
+                case "$1":switch (mnemnonic[2]){
+                    case "%D":return "000001110";
+                    case "%A":return "000110010";
+                    case "(%A)":return "001110010";
+                }
+                case "%A":
+                    if ("%D".equals(mnemnonic[2])) {
+                        return "000010011";
+                    }
+                case "(%A)":
+                    if ("%D".equals(mnemnonic[2])) {
+                        return "001010011";
+                    }
+            }
             case "decw" :  switch (mnemnonic[1]) {
                 case "%D" : return "000001110";
                 case "%A" : return "000110010";
@@ -149,12 +188,24 @@ public class Code {
                 case "%A" : return "000110011";
             }
             case "andw" :  switch (mnemnonic[1]) {
-                case "(%A)" : return "001000000";
-                case "%D" : return "000000000";
+                case "%D": switch (mnemnonic[2]){
+                    /*andw %D,%A,Z*/
+                    case "%A": return "000000000";
+                    /*andw %D,(%A),Z*/
+                    case "(%A)": return "001000000";
+                }
+                case "%A": return "000000000"; /*andw %A,%D,Z*/
+                case "(%A)": return "001000000"; /*andw %(%A),%D,Z*/
             }
             case "orw" :  switch (mnemnonic[1]) {
-                case "(%A)" : return "001010101";
-                case "%D" : return "000010101";
+                case "%D": switch (mnemnonic[2]){
+                    /*orw %D,%A,Z*/
+                    case "%A": return "000010101";
+                    /*andw %D,(%A),Z*/
+                    case "(%A)": return "001010101";
+                }
+                case "%A": return "000010101"; /*andw %A,%D,Z*/
+                case "(%A)": return "001010101"; /*andw %(%A),%D,Z*/
             }
             default : return "000001100";
         }
@@ -185,20 +236,19 @@ public class Code {
      * @return Valor em binário (String de 15 bits) representado com 0s e 1s.
      */
     public static String toBinary(String symbol) {
-        /* TODO: implementar */
-        switch (symbol){
-            case "0" : return "0000000000000000";
-            case "1" : return "0000000000000001";
-            case "10" : return "0000000000001010";
-            case "100" : return "0000000001100100";
-            case "1000" : return "0000001111101000";
-            case "21845" : return "0101010101010101";
-            case "32767" : return "0111111111111111";
-            case "65535" : return "1111111111111111";
-            default : return "0000000000000000";
+        int num = Integer.valueOf(symbol);
+        String binario = "";
+        int resto = 0;
 
+        while (num > 0){
+            resto = num%2;
+            binario=resto+binario;
+            num = num/2;
         }
-
+        while (binario.length() != 16){
+            binario = '0' + binario;
+        }
+        return binario;
     }
 
 }
