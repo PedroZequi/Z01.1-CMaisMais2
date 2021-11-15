@@ -126,7 +126,7 @@ public class Code {
                 case "%D": switch (mnemnonic[2]){
                     case "%A":return "000000010";
                     case "(%A)":return "001000010";
-                    case "$1":return "00";
+                    case "$1":return "000011111";
                 }
                 case "%A": switch (mnemnonic[2]){
                     case "%D":return "000000010";
@@ -135,6 +135,11 @@ public class Code {
                 case "(%A)":switch (mnemnonic[2]){
                     case "%D":return "001000010";
                     case "$1":return "001110111";
+                }
+                case "$1":switch (mnemnonic[2]){
+                    case "%D":return "000011111";
+                    case "%A":return "000110111";
+                    case "(%A)":return "001110111";
                 }
             }
             case "incw" :  switch (mnemnonic[1]) {
@@ -245,6 +250,7 @@ public class Code {
             binario=resto+binario;
             num = num/2;
         }
+
         while (binario.length() != 16){
             binario = '0' + binario;
         }
