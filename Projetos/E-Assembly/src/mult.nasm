@@ -5,7 +5,7 @@
 
 ; Multiplica o valor de RAM[1] com RAM[0] salvando em RAM[3]
 
- MULT:
+MULT:
 leaw $1, %A
 movw (%A), %D
 leaw $3, %A
@@ -14,7 +14,6 @@ movw %D, (%A)
 leaw $0, %A
 subw (%A), $1, %D 
 movw %D, (%A)
-leaw %MULT, %A
+leaw $MULT, %A
 jg %D
 nop
- 
