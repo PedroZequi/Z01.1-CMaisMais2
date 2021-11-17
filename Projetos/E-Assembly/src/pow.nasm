@@ -20,7 +20,7 @@ movw (%A), %D
 leaw $0, %A
 addw %D, (%A), %D
 movw %D, (%A)
-leaw %CONT, %A
+leaw $CONT, %A
 jmp
 nop
 CONT:
