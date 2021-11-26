@@ -1,1 +1,27 @@
 function pow 3
+    push argument 0 //base
+    pop local 0 //local 0=base
+    push argument 1
+    pop local 1 //local 1=expoente
+    push argument 0
+    pop local 2
+label loop
+    push local 1 //expoente
+    push constant 1 //1
+    sub //expoente - 1
+    pop local 1//guarda exponent subtraido em local1
+    push constant 0
+    push local 1
+    eq
+    if-goto end
+    push local 0
+    push local 2
+    call mult 2
+    pop local 0
+    goto loop
+label end
+    push local 0
+    return
+    
+
+
