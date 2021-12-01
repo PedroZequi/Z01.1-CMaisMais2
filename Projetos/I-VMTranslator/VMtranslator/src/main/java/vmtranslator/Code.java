@@ -305,8 +305,14 @@ public class Code {
      */
     public void writeGoto(String label) {
 
-        List<String> commands = new ArrayList<String>();
-        commands.add(String.format("; %d - Goto Incondicional", lineCode++));
+        List<String> commands = new ArrayList<>();
+        commands.add(String.format("; %d - Goto Incondicional", new Object[] { Integer.valueOf(this.lineCode++) }));
+        commands.add("leaw $"+ label + ",%A");
+        commands.add("jmp");
+        commands.add("nop");
+        String[] stringArray = new String[commands.size()];
+        commands.toArray(stringArray);
+        write(stringArray);
 
     }
 
