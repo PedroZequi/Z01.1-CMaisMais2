@@ -1,1 +1,18 @@
 function div 2
+label loop
+	push constant 0
+	push argument 0
+	eq
+	if-goto end
+	push argument 0
+	push argument 1
+	sub
+	pop argument 0
+	push local 1
+	push constant 1
+	add
+	pop local 1
+	goto loop
+label end
+	push local 1
+	return
