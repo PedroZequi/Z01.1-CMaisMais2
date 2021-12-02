@@ -80,25 +80,25 @@ public class Code {
         } else if (command.equals("eq")) {
             commands.add(String.format("; %d - EQ", lineCode++));
             commands.add("leaw $SP, %A");
-            commands.add("movw (%A), %A"); // movo o que está em SP pra A
-            commands.add("decw %A"); // decresci uma linha
-            commands.add("movw (%A), %D"); //move o que está no SP-1 para D
-            commands.add("decw %A"); // decresci outra linha
-            commands.add("movw (%A), %A"); // move o que está no SP-2 para A
-            commands.add("subw %A, %D, %D"); //subtrai para ver se dá 0
+            commands.add("movw (%A), %A");
+            commands.add("decw %A");
+            commands.add("movw (%A), %D");
+            commands.add("decw %A");
+            commands.add("movw (%A), %A");
+            commands.add("subw %A, %D, %D");
 
-            commands.add("leaw $TRUE, %A"); //
+            commands.add("leaw $TRUE, %A");
             commands.add("je %D");
             commands.add("nop");
             commands.add("leaw $SP, %A");
             commands.add("movw (%A), %A");
             commands.add("decw %A");
             commands.add("decw %A");
-            commands.add("movw $0, (%A)"); // retorna false
+            commands.add("movw $0, (%A)");
             commands.add("incw %A");
             commands.add("movw %A, %D");
             commands.add("leaw $SP, %A");
-            commands.add("movw %D, (%A)"); // mover o valor do noso SP para ele
+            commands.add("movw %D, (%A)");
             commands.add("leaw $END, %A");
             commands.add("jmp");
             commands.add("nop");
@@ -108,11 +108,11 @@ public class Code {
             commands.add("movw (%A), %A");
             commands.add("decw %A");
             commands.add("decw %A");
-            commands.add("movw $-1, (%A)"); // retorna false
+            commands.add("movw $-1, (%A)"); 
             commands.add("incw %A");
             commands.add("movw %A, %D");
             commands.add("leaw $SP, %A");
-            commands.add("movw %D, (%A)"); // mover o valor do noso SP para ele
+            commands.add("movw %D, (%A)");
             commands.add("leaw $END, %A");
             commands.add("jmp");
             commands.add("nop");
@@ -589,29 +589,6 @@ public class Code {
 
         List<String> commands = new ArrayList<String>();
         commands.add(String.format("; %d - Goto Condicional", lineCode++));
-
-        // Ultimo valor da pilha.
-        commands.add("leaw $SP, %A");
-        commands.add("movw (%A), %A");
-        commands.add("decw %A");
-        // Decrementa o SP
-        commands.add("movw %A, %D");
-        commands.add("leaw $SP, %A");
-        commands.add("movw %D, (%A)");
-        commands.add("movw %D, %A");
-        // Coloca o valor a ser comparado no %D
-        commands.add("movw (%A), %D");
-
-        // Coloca esse valor do ultimo valor da pilha em %D
-        commands.add("notw %D");
-        commands.add("leaw $" + label + ", %A");
-        commands.add("je %D");
-        commands.add("nop");
-
-        // Escreve no arquivo de saida
-        String[] stringArray = new String[commands.size()];
-        commands.toArray(stringArray);
-        write(stringArray);
      }
 
     /**
