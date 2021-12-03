@@ -87,7 +87,7 @@ public class Code {
             commands.add("movw (%A), %A");
             commands.add("subw %A, %D, %D");
 
-            commands.add("leaw $TRUE, %A");
+            commands.add("leaw $TRUEEQ, %A");
             commands.add("je %D");
             commands.add("nop");
             commands.add("leaw $SP, %A");
@@ -99,11 +99,11 @@ public class Code {
             commands.add("movw %A, %D");
             commands.add("leaw $SP, %A");
             commands.add("movw %D, (%A)");
-            commands.add("leaw $END, %A");
+            commands.add("leaw $ENDEQ, %A");
             commands.add("jmp");
             commands.add("nop");
 
-            commands.add("TRUE:");
+            commands.add("TRUEEQ:");
             commands.add("leaw $SP, %A");
             commands.add("movw (%A), %A");
             commands.add("decw %A");
@@ -113,11 +113,11 @@ public class Code {
             commands.add("movw %A, %D");
             commands.add("leaw $SP, %A");
             commands.add("movw %D, (%A)");
-            commands.add("leaw $END, %A");
+            commands.add("leaw $ENDEQ, %A");
             commands.add("jmp");
             commands.add("nop");
 
-            commands.add("END:");
+            commands.add("ENDEQ:");
 
 
         } else if (command.equals("gt")) {
@@ -130,7 +130,7 @@ public class Code {
             commands.add("movw (%A), %A"); // move o que está no SP-2 para A
             commands.add("subw %A, %D, %D"); //subtrai para ver se dá 0
 
-            commands.add("leaw $TRUE, %A"); //
+            commands.add("leaw $TRUEGT, %A"); //
             commands.add("jg %D");
             commands.add("nop");
             commands.add("leaw $SP, %A");
@@ -142,11 +142,11 @@ public class Code {
             commands.add("movw %A, %D");
             commands.add("leaw $SP, %A");
             commands.add("movw %D, (%A)"); // mover o valor do noso SP para ele
-            commands.add("leaw $END, %A");
+            commands.add("leaw $ENDGT, %A");
             commands.add("jmp");
             commands.add("nop");
 
-            commands.add("TRUE:");
+            commands.add("TRUEGT:");
             commands.add("leaw $SP, %A");
             commands.add("movw (%A), %A");
             commands.add("decw %A");
@@ -156,11 +156,11 @@ public class Code {
             commands.add("movw %A, %D");
             commands.add("leaw $SP, %A");
             commands.add("movw %D, (%A)"); // mover o valor do noso SP para ele
-            commands.add("leaw $END, %A");
+            commands.add("leaw $ENDGT, %A");
             commands.add("jmp");
             commands.add("nop");
 
-            commands.add("END:");
+            commands.add("ENDGT:");
 
 
         } else if (command.equals("lt")) {
@@ -173,7 +173,7 @@ public class Code {
             commands.add("movw (%A), %A"); // move o que está no SP-2 para A
             commands.add("subw %A, %D, %D"); //subtrai para ver se dá 0
 
-            commands.add("leaw $TRUE, %A"); //
+            commands.add("leaw $TRUELT, %A"); //
             commands.add("jl %D");
             commands.add("nop");
             commands.add("leaw $SP, %A");
@@ -185,11 +185,11 @@ public class Code {
             commands.add("movw %A, %D");
             commands.add("leaw $SP, %A");
             commands.add("movw %D, (%A)"); // mover o valor do noso SP para ele
-            commands.add("leaw $END, %A");
+            commands.add("leaw $ENDLT, %A");
             commands.add("jmp");
             commands.add("nop");
 
-            commands.add("TRUE:");
+            commands.add("TRUELT:");
             commands.add("leaw $SP, %A");
             commands.add("movw (%A), %A");
             commands.add("decw %A");
@@ -198,12 +198,12 @@ public class Code {
             commands.add("incw %A");
             commands.add("movw %A, %D");
             commands.add("leaw $SP, %A");
-            commands.add("movw %D, (%A)"); // mover o valor do noso SP para ele
-            commands.add("leaw $END, %A");
+            commands.add("movw %D, (%A)"); // mover o valor do nosso SP para ele
+            commands.add("leaw $ENDLT, %A");
             commands.add("jmp");
             commands.add("nop");
 
-            commands.add("END:");
+            commands.add("ENDLT:");
 
         } else if (command.equals("and")) {
             commands.add(String.format("; %d - AND", lineCode++));
